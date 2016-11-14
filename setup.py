@@ -20,7 +20,7 @@ setup(
     long_description=open('README.rst').read(),
     url='https://github.com/freshplum/django-simple-rest',
     packages=find_packages(),
-    install_requires=['setuptools', 'mimeparse'],
+    install_requires=['setuptools', 'python-mimeparse'],
     zip_safe=False,
     keywords='rest,django,api',
     classifiers=[

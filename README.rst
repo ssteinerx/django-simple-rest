@@ -39,17 +39,25 @@ There's nothing to it, it works just like you'd expect it to---assuming you're f
 Sample Project Setup
 ####################
 
-The code in the rest of this document will assume that you're using Django 1.4 or greater (you can follow along using Django 1.3, but your directory structure will be slightly different form the one below) and that you've created a project called ``simple_rest_example`` and an application within it called ``phonebook``.
+This current version of the project has been upgraded to work with Django 1.8+, so the code in the rest of this document will assume that you're using Django 1.8 or greater.  I also use the [virtualenvwrapper](http://virtualenvwrapper.readthedocs.io/en/latest/index.html) extension, so modify to suit your environment.
+
+First, create a virtual environment, a project called ``simple_rest_example`` and an application within it called ``phonebook``:
+
+    mkvirtualenv simple_rest_example
+    pip install -r requirements.txt
+    django-admin startproject simple_rest_example
+    cd simple_rest_example
+    ./manage.py startapp phonebook
 
 Once you've created your sample project and application, you'll need to add a new URLconf to the phonebook application where we will add all of our routes for the duration of this tutorial. Then, update the URLconf in the ``simple_rest_example`` folder to include the URLconf you've just created. This will allow us to do all of our work in the phonebook app from here on out. The ``urls.py`` file in your ``simple_rest_example`` folder should now look like the following::
 
     # =============================
-    # simple_rest_example/views.py
+    # simple_rest_example/urls.py
     # =============================
 
     from django.conf.urls import patterns, include, url
 
-    urlpatterns = patterns('',
+    urlpatterns = (
         url(r'^phonebook/', include('phonebook.urls')),
     )
 

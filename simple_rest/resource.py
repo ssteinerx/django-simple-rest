@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.views.generic import View
 from django.views.decorators.csrf import csrf_exempt
 
@@ -12,6 +12,7 @@ class Resource(View):
         # Technically, the HTTP spec does not preclude any HTTP request from
         # containing data in the message body, so load the data into the POST
         # dict if there is any present
+        assert(isinstance(request, HttpRequest))
         method = request.method
         request.method = 'POST'
         request._load_post_and_files()
@@ -42,7 +43,7 @@ class Resource(View):
         # occurred.
         try:
             response = super(Resource, self).dispatch(request, *args, **kwargs)
-        except HttpError, e:
+        except (HttpError) as e:
             response = HttpResponse(status=e.status)
 
         return response

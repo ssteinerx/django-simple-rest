@@ -12,7 +12,7 @@ try:
     from pygments.lexers import JSONLexer
     from pygments.formatters import HtmlFormatter
     PYGMENTS_INSTALLED = True
-except Exception, e:
+except (Exception) as e:
     logging.info("Install pygments for syntax highlighting")
     PYGMENTS_INSTALLED = False
 
