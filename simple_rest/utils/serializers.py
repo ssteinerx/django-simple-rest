@@ -98,7 +98,7 @@ def to_text(data):
     """
     try:
         serialized_content = to_json(data, indent=4)
-    except Exception, e:
+    except (Exception) as e:
         serialized_content = data
     return serialized_content
 
